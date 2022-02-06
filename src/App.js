@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import PokemonCards from './components/PokemonCards';
+import Form from './components/Form.js';
+import { usePokemon } from './hooks/usePokemon';
+import Modal from './components/Modal/Modal';
+import './App.css'
+import { useTypes as useTypes } from './hooks/useTypes';
 
-function App() {
+const App = () => {
+  const [currentPokemon, setCurrentPokemon] = useState( {} );
+  const [type, setType] = useState( 'fire' );
+  const [isOpen, setIsOpen] = useState( false );
+  const {pokemons, isLoading} = usePokemon( type );
+
+  // fix that
+  const [ types, isTypesLoading ] = useTypes();
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      {
+        isLoading || isTypesLoading
+        ? <div className="loader">
+            <div></div>
+          </div>
+
+        : 
+          <> 
+            <h1>Pokédex</h1>
+            <Form types={ types } setType={ setType }/>
+            <PokemonCards 
+              pokemons={ pokemons }
+              setIsOpen={ setIsOpen }
+              setCurrentPokemon={ setCurrentPokemon }
+            />
+          </>
+      }
+
+      <Modal isOpen={isOpen} onClose={ () => { setIsOpen(false) } } currentPokemon={ currentPokemon }/>
     </div>
   );
-}
+};
 
 export default App;
