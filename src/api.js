@@ -25,3 +25,11 @@ export const fetchPokemonsData = async (type) => {
 
     return pokemons;
 }
+
+export const fetchEvolution = async (pokemonID) => {
+    callAPI('pokemon-species/' + pokemonID)
+    .then(response => response.json())
+    .then(data => {
+        data.id
+    })
+}
