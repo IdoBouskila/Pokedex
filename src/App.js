@@ -8,7 +8,7 @@ import { useTypes as useTypes } from './hooks/useTypes';
 
 const App = () => {
   const [currentPokemon, setCurrentPokemon] = useState( {} );
-  const [type, setType] = useState( 'fire' );
+  const [type, setType] = useState( 'dark' );
   const [isOpen, setIsOpen] = useState( false );
   const {pokemons, isLoading} = usePokemon( type );
 
@@ -25,7 +25,7 @@ const App = () => {
 
         : 
           <> 
-            <h1>Pokédex</h1>
+            <h1 className="logo-pokemon">Pokédex</h1>
             <Form types={ types } setType={ setType }/>
             <PokemonCards 
               pokemons={ pokemons }

@@ -26,10 +26,26 @@ export const fetchPokemonsData = async (type) => {
     return pokemons;
 }
 
-export const fetchEvolution = async (pokemonID) => {
-    callAPI('pokemon-species/' + pokemonID)
-    .then(response => response.json())
-    .then(data => {
-        data.id
-    })
-}
+// export const fetchEvolution = async (pokemonID) => {
+//     callAPI('pokemon-species/' + pokemonID)
+//     .then(response => response.json())
+//     .then(data => {
+//         callAPI('evolution-chain/' + data.id)
+//         .then(response => response.json())
+//         .then(data => {
+//             const pokeEvolution = [
+//                 {
+//                     name: pokemonID,
+//                     level: data.chain.evolves_to[0].evolution_details[0].min_level,
+//                 },
+//                 {
+//                     name: data.chain.evolves_to[0].evolves_to[0].evolution_details[0].species.name,
+//                     level: data.chain.evolves_to[0].evolves_to[0].evolution_details[0].min_level,
+//                 },
+//                 {
+//                     name: 
+//                 }
+//             ]
+//         })
+//     })
+// }

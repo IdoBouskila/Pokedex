@@ -20,7 +20,7 @@ const Stats = ({ currentPokemon }) => {
                         <td className='category'>HP</td>
                         <td className="stats-number">{ hp }</td>
                         <td className="range-slide">
-                            <div className="range-slide-fill" style={{"width": hp + "%"}}></div>
+                            <div className="range-slide-fill" style={{"--max": '714', "--value": hp}}></div>
                         </td>
                     </tr>
         
@@ -28,7 +28,7 @@ const Stats = ({ currentPokemon }) => {
                         <td className='category'>Attack</td>
                         <td className="stats-number">{ attack }</td>
                         <td className="range-slide">
-                            <div className="range-slide-fill" style={{"width": attack + "%"}}></div>
+                            <div className="range-slide-fill" style={{"--max": '714', "--value": hp}}></div>
                         </td>
                     </tr>
 
@@ -36,7 +36,7 @@ const Stats = ({ currentPokemon }) => {
                         <td className='category'>Defense</td>
                         <td className="stats-number">{ defense }</td>
                         <td className="range-slide">
-                            <div className="range-slide-fill" style={{"width": defense + "%"}}></div>
+                            <div className="range-slide-fill" style={{"--max": '614', "--value": defense}}></div>
                         </td>
                     </tr>
 
@@ -44,7 +44,7 @@ const Stats = ({ currentPokemon }) => {
                         <td className='category'>Sp. Atk</td>
                         <td className="stats-number">{ spAttack }</td>
                         <td className="range-slide">
-                            <div className="range-slide-fill" style={{"width": spAttack + "%"}}></div>
+                            <div className="range-slide-fill" style={{"--max": '504', "--value": spAttack}}></div>
                         </td>
                     </tr>
 
@@ -52,7 +52,7 @@ const Stats = ({ currentPokemon }) => {
                         <td className='category'>Sp. Def</td>
                         <td className="stats-number">{ spDefense }</td>
                         <td className="range-slide">
-                            <div className="range-slide-fill" style={{"width": spDefense + "%"}}></div>
+                            <div className="range-slide-fill" style={{"--max": '614', "--value": spDefense}}></div>
                         </td>
                     </tr>
 
@@ -60,7 +60,7 @@ const Stats = ({ currentPokemon }) => {
                         <td className='category'>Speed</td>
                         <td className="stats-number">{ speed }</td>
                         <td className="range-slide">
-                            <div className="range-slide-fill" style={{"width": speed + "%"}}></div>
+                            <div className="range-slide-fill" style={{"--max": '504', "--value": speed}}></div>
                         </td>
                     </tr>
 

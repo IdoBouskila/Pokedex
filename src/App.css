@@ -1,3 +1,5 @@
+@import url('http://fonts.cdnfonts.com/css/pokemon-solid');
+
 * {
   margin: 0;
   padding: 0;
@@ -237,13 +239,38 @@ a {
 
 /* style main components */
 .wrapper {
-  padding: 5vw;
+  padding: 0 5vw 5vw 5vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper .logo-pokemon {
+  position: relative;
+  display: flex;
+  margin: -50px auto 0 auto;
+  font-family: 'Pokemon Solid';
+  font-size: max(5vw, 5rem);
+  color: #ffcb05;
+  text-align: center;
+  -webkit-text-stroke: 5px #3b5ca8;
+  text-shadow: -1px 0px 0px #1d2c5e;
+}
+
+.wrapper .logo-pokemon::before {
+  content: 'Pokédex';
+  position: absolute;
+  left: -5px;
+  bottom: -6px;
+  font-size: max(5vw, 5rem);
+  -webkit-text-stroke: transparent;
+  color: #1d2c5e;
+  z-index: -1;
 }
 
 .types-bar {
   display: flex;
-  width: 95%;
-  padding: 15px 2vw;
+  width: 100%;
+  padding: 15px 2vw; 
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -256,8 +283,8 @@ a {
 
 .types-bar a {
   display: flex;
-  width: 6vw;
-  height: 6vw;
+  width: 7vw;
+  height: 7vw;
   padding: 1.5vw;
   cursor: pointer;
   border-radius: 100%;
@@ -375,6 +402,7 @@ a {
   border-radius: 25px;
   background: currentColor;
   overflow: hidden;
+  animation: unfoldIn .7s ease-in-out;
 }
 
 .modal::before {
@@ -546,7 +574,7 @@ td > img {
 }
 
 .data-container td {
-  padding: 1.2vw;
+  padding: 0.7vw 3vw;
 }
 
 .data-container .category {
@@ -559,15 +587,20 @@ td > img {
   color: #7d7d7d;
 }
 
-.range-slide {
+td.range-slide {
   width: 100%;
+  padding: 0;
 }
 
 .range-slide-fill {
   position: relative;
   height: 5px;
   border-radius: 10px;
-  width: 0;
+
+  --max: 100;
+  --value: 1;
+  --precentage: calc( var(--value) / var(--max) * 100%);
+  width: var(--precentage);
 }
 
 .range-slide-fill::after {
@@ -648,7 +681,7 @@ td > img {
 
 
 /* animations */
-@keyframes fill{
+@keyframes fill {
   0% {
     width: 0%;
   }
@@ -663,5 +696,33 @@ td > img {
   100% {
     --scale: 1;
     transform-origin: 50% 100%;
+  }
+}
+
+@keyframes unfoldIn {
+  0% {
+    transform: translate(-50%, 0%) scaleY(.005) scaleX(0);
+  }
+  
+  50% {
+    transform: translate(-50%, 0%) scaleY(.005) scaleX(1);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes unfoldOut {
+  0% {
+    transform:scaleY(1) scaleX(1);
+  }
+
+  50% {
+    transform:scaleY(.005) scaleX(1);
+  }
+
+  100% {
+    transform:scaleY(.005) scaleX(0);
   }
 }
