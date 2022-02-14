@@ -239,7 +239,7 @@ a {
 
 /* style main components */
 #root {
-  padding: 2.5vw 5vw;
+  padding: 2.5vw 7.5vw;
 }
 
 .wrapper {
@@ -627,6 +627,10 @@ td.range-slide {
 }
 
 @media screen and (min-width: 880px) {
+  #root {
+    padding: 2.5vw 5vw;
+  }
+
   .pokemon-card {
     width: 30%;
     height: 200px;
