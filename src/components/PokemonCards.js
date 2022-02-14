@@ -1,7 +1,5 @@
 import React from 'react';
 import Card from './Card';
-import { capitalizeName } from '../utils';
-import { nanoid } from 'nanoid';
 
 const PokemonCards = ({ pokemons, setIsOpen,setCurrentPokemon }) => {
     return (
