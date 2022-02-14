@@ -475,7 +475,7 @@ a {
 }
 
 .current-pokemon img {
-  width: 100%;
+  width: 50%;
   height: 100%;
   margin-right: 25px;
   animation: shake .4s cubic-bezier(.36,.07,.19,.97) both, blur .3s ease-out;
