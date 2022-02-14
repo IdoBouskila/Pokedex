@@ -23,7 +23,7 @@ const Modal = ({ isOpen, onClose, currentPokemon }) => {
                         <a onClick={ onClose } className="arrow-back"></a>
 
                         <div className="current-pokemon">
-                            <img src={ avatarURL } alt="SOMEPIC" />
+                            <img src={ avatarURL } alt="Pokemon-Image" />
 
                             <div>
                                 <span className='id-number'>#{ padID }</span>
