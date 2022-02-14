@@ -1,6 +1,5 @@
-import { type } from '@testing-library/user-event/dist/type';
 import React from 'react';
-import { pokemonsNamesByTypes } from '../api';
+
 
 const Card = ({ avatarURL, name, types, id, pokemons, setIsOpen, setCurrentPokemon }) => {   
     const padID = String(id).padStart(3, '0')

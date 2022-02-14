@@ -1,4 +1,3 @@
-import { TapAndPlayTwoTone } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 
 const Form = ({ types, setType }) => {
