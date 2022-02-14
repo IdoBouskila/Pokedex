@@ -238,8 +238,11 @@ a {
 
 
 /* style main components */
+#root {
+  padding: 2.5vw 5vw;
+}
+
 .wrapper {
-  padding: 0 5vw 5vw 5vw;
   display: flex;
   flex-direction: column;
 }
