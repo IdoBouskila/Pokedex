@@ -35,7 +35,7 @@ const App = () => {
           </>
       }
 
-      <Modal isOpen={isOpen} onClose={ () => { setIsOpen(false) } } currentPokemon={ currentPokemon }/>
+      <Modal isOpen={isOpen} setIsOpen={ setIsOpen } currentPokemon={ currentPokemon }/>
     </div>
   );
 };

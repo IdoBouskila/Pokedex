@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import DataContainer from './DataContainer';
 
-const Modal = ({ isOpen, onClose, currentPokemon }) => {
+const Modal = ({ isOpen, setIsOpen, currentPokemon }) => {
+    const [modalClass, setModalClass] = useState( null );
+    
+    // animation on unMount
+    const unMount = () => { 
+        setModalClass('hidden')
+        const transition = document.querySelector("div.modal");
+
+        transition.onanimationend = () => {
+            setIsOpen(false);
+            setModalClass(null);
+        };
+    }
+
+    
     if (!isOpen) return(null);
 
     const avatarURL = currentPokemon.sprites.other.dream_world.front_default || currentPokemon.sprites.other['official-artwork'].front_default;
@@ -16,11 +30,11 @@ const Modal = ({ isOpen, onClose, currentPokemon }) => {
 
     return ReactDom.createPortal(
             <>
-                <div onClick={ onClose } className="overlay"></div>
+                <div onClick={ unMount } className="overlay"></div>
 
-                <div className={ `modal ${ firstType }` } data-content={ name }>
+                <div className={ `modal ${ firstType } ` + modalClass } data-content={ name }>
                     <div className="pokemon-intro">
-                        <a onClick={ onClose } className="arrow-back"></a>
+                        <a onClick={ unMount } className="arrow-back"></a>
 
                         <div className="current-pokemon">
                             <img src={ avatarURL } alt="Pokemon-Image" />
