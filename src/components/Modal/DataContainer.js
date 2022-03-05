@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
+
 import Stats from './data-types/Stats';
 import Evolution from './data-types/Evolution';
 import About from './data-types/About';
-import { SettingsSystemDaydreamRounded } from '@material-ui/icons';
 
 const DataContainer = ({ currentPokemon }) => {
     const [dataType, setDataType] = useState('About');
@@ -30,7 +30,7 @@ const DataContainer = ({ currentPokemon }) => {
                 return <Stats currentPokemon={ currentPokemon }/>;
                 
             case 'Evolution':
-                return <Evolution currentPokemon={ currentPokemon }/>;
+                return <Evolution id={ currentPokemon.id }/>;
 
             default:
                 return null;

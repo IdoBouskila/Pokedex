@@ -1,24 +1,23 @@
 const apiURL = 'https://pokeapi.co/api/v2/';
 
-export const callAPI = async (endpoint) => {
+export const callAPI = (endpoint) => {
     return fetch(apiURL + endpoint)
     .then(response => response.json());
 }
 
-export const pokemonsNamesByTypes = async (type) => {
+export const pokemonsNamesByTypes = (type) => {
     return callAPI('type/' + type);
 }
 
-export const fetchPokemonsData = async (type) => {
+export const fetchPokemonsData = (type) => {
     const pokemons = []
     pokemonsNamesByTypes(type)
     .then(data => {
-        
-        (data.pokemon).map(item => {
+        data.pokemon.forEach((item, index) => {
             fetch(item.pokemon.url)
             .then(response => response.json())
             .then(data => {
-                pokemons.push(data);
+                pokemons[index] = data;
             })
         })
     })
@@ -26,26 +25,7 @@ export const fetchPokemonsData = async (type) => {
     return pokemons;
 }
 
-// export const fetchEvolution = async (pokemonID) => {
-//     callAPI('pokemon-species/' + pokemonID)
-//     .then(response => response.json())
-//     .then(data => {
-//         callAPI('evolution-chain/' + data.id)
-//         .then(response => response.json())
-//         .then(data => {
-//             const pokeEvolution = [
-//                 {
-//                     name: pokemonID,
-//                     level: data.chain.evolves_to[0].evolution_details[0].min_level,
-//                 },
-//                 {
-//                     name: data.chain.evolves_to[0].evolves_to[0].evolution_details[0].species.name,
-//                     level: data.chain.evolves_to[0].evolves_to[0].evolution_details[0].min_level,
-//                 },
-//                 {
-//                     name: 
-//                 }
-//             ]
-//         })
-//     })
-// }
+export const fetchEvolution = (pokemonID) => {
+    return callAPI('pokemon-species/' + pokemonID)
+    .then( ( data ) => fetch( data.evolution_chain.url ).then( res => res.json() ) );
+}

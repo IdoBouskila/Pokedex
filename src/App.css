@@ -592,7 +592,7 @@ td > img {
 }
 
 .data-container .category {
-  padding-right: 10vw;
+  padding: 0 10vw 0 0;
   font-weight: 600;
   color: #3d3d40;
 }
