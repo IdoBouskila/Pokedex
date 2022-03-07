@@ -2,6 +2,7 @@ import React from 'react';
 
 
 const Card = ({ avatarURL, name, types, id, pokemons, setIsOpen, setCurrentPokemon }) => {   
+
     const padID = String(id).padStart(3, '0')
     const firstType = types[0].type.name;
     
@@ -17,11 +18,9 @@ const Card = ({ avatarURL, name, types, id, pokemons, setIsOpen, setCurrentPokem
         })
     }
     
-    const PokemonCardClickHandler = (e) => {
-        const targetPokemon = name;
-        
+    const PokemonCardClickHandler = (e) => {        
         setCurrentPokemon( 
-            pokemons.find(item => item.name === targetPokemon)
+            pokemons.find(item => item.id === id)
         );
         
         setIsOpen(true)

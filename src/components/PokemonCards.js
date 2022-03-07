@@ -7,7 +7,7 @@ const PokemonCards = ({ pokemons, setIsOpen,setCurrentPokemon }) => {
             {
                 pokemons.map(pokemon => {
                     const avatarURL = pokemon.sprites.other.dream_world.front_default || pokemon.sprites.other['official-artwork'].front_default;
-                    const name = pokemon.name;
+                    const name = pokemon.name.replaceAll('-', ' ');
                     const types = pokemon.types;
                     const id = pokemon.id;
 

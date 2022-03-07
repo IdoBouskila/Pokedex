@@ -20,7 +20,7 @@ const Modal = ({ isOpen, setIsOpen, currentPokemon }) => {
     if (!isOpen) return(null);
 
     const avatarURL = currentPokemon.sprites.other.dream_world.front_default || currentPokemon.sprites.other['official-artwork'].front_default;
-    const name = currentPokemon.name;
+    const name = currentPokemon.name.replaceAll('-', ' ');
     const types = currentPokemon.types;
     const id = currentPokemon.id;
     
