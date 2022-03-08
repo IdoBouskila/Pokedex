@@ -9,7 +9,7 @@ function normalizeEvolutionsData( evolutionChain ) {
         return [];
     }
     
-    const { evolves_to, species, evolution_details } = evolutionChain;
+    const { evolves_to, species } = evolutionChain;
     const evolutions = evolves_to.reduce( ( all, evolution ) => {
         return [ ...all, {
             level: evolution.evolution_details[0].min_level,
@@ -25,9 +25,7 @@ function normalizeEvolutionsData( evolutionChain ) {
         
     }, [] );
 
-    return evolutions;
-
-    
+    return evolutions;   
 }
 
 const Evolution = ({ id }) => {
@@ -38,14 +36,11 @@ const Evolution = ({ id }) => {
         const normalized = normalizeEvolutionsData(data.chain);
         
         setEvolutions(normalized);
-
-        console.log(normalized);
     }, []);
 
     return (
         <>
             {
-
                 evolutions.map(evolution => (
                     <div key={ evolution.currentEvolution.name + '-' + evolution.nextEvolution.name} className="evolution-container">
                         <div className="current-evolution">
