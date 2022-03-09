@@ -250,7 +250,7 @@ a {
 .wrapper .logo-pokemon {
   position: relative;
   display: flex;
-  margin: 0 auto 0 auto;
+  margin: 20px auto 0 auto;
   font-family: 'Pokemon Solid';
   font-size: max(5vw, 5rem);
   color: #ffcb05;
@@ -582,6 +582,10 @@ a {
   padding-bottom: 4.5vh;
 }
 
+.evolution-container:last-child {
+  padding: 0;
+}
+
 .evolution-container .current-evolution, .next-evolution {
   position: relative;
   display: flex;
@@ -623,6 +627,10 @@ a {
   display: flex;
   flex-direction: column;
 }  
+
+.evolution-container .evolution-level {
+  font-size: 14px;
+}
 
 .evolution-container .level-container .arrow {
   position: relative;
