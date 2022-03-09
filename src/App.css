@@ -572,7 +572,7 @@ a {
 
 .data-container .evolution-tab {
   max-height: 40vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .evolution-container {
