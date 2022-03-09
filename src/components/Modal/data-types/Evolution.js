@@ -12,6 +12,7 @@ function normalizeEvolutionsData( evolutionChain ) {
     const { evolves_to, species } = evolutionChain;
 
     const evolutions = evolves_to.reduce( ( all, evolution ) => {
+        const img = https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/700.png;
         return [ ...all, {
             level: evolution.evolution_details[0].min_level,
             currentEvolution: {

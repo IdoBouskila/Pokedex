@@ -250,7 +250,7 @@ a {
 .wrapper .logo-pokemon {
   position: relative;
   display: flex;
-  margin: -50px auto 0 auto;
+  margin: 0 auto 0 auto;
   font-family: 'Pokemon Solid';
   font-size: max(5vw, 5rem);
   color: #ffcb05;
