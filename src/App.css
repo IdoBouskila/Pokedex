@@ -571,8 +571,21 @@ a {
 }
 
 .data-container .evolution-tab {
+  position: relative;
   max-height: 40vh;
   overflow-y: auto;
+  min-height: 15vh;
+}
+
+.evolution-tab .loader {
+  width: 15vw;
+  height: 15vw;
+}
+
+.evolution-tab .loader div, .evolution-tab .loader::before, .evolution-tab .loader::after {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .evolution-container {
@@ -796,6 +809,11 @@ td.range-slide {
     right: 1px;
     top: -0.6vw;
     border-width: 0.25vw;
+  }
+  
+  .evolution-tab .loader {
+    width: 3.5vw;
+    height: 3.5vw;
   }
 }
 
