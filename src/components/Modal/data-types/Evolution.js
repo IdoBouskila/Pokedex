@@ -1,10 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { fetchEvolution } from '../../../api';
+import useEvolution from '../../../hooks/useEvolution';
 
-
-function normalizeEvolutionsData( evolutionChain ) {
+export function normalizeEvolutionsData( evolutionChain ) {
     if(!evolutionChain.evolves_to.length) {
         return [];
     }
@@ -28,20 +25,19 @@ function normalizeEvolutionsData( evolutionChain ) {
     return evolutions;
 }
 
+
 const Evolution = ({ id }) => {
-    const [evolutions, setEvolutions] = useState([]);
-
-    useEffect(async () => {
-        const data = await fetchEvolution(id);
-        const normalized = normalizeEvolutionsData(data.chain);
-        
-        setEvolutions(normalized);
-    }, []);
-
+    const {isLoading, evolutions} = useEvolution(id);
+    
     return (
         <>
             <div className="evolution-tab">
                 {
+                    isLoading ?
+                    <div className="loader">
+                        <div></div>
+                    </div>
+                    :
                     evolutions.map(evolution => (
                         <div key={ evolution.currentEvolution.name + '-' + evolution.nextEvolution.name} className="evolution-container">
                             <div className="current-evolution">
