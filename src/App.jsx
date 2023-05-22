@@ -1,10 +1,16 @@
-import './App.css'
+import './App.css';
+import React, { Suspense, useState } from 'react';
+import TypesBar from './components/TypesBar';
 
 function App() {
+  const [type, setType] = useState('');
+
   return (
-    <>
-      <h1>Hello World!</h1>
-    </>
+    <Suspense fallback={ <h1>Loading...</h1> }>
+        <div className='wrapper'>
+          <TypesBar toggleType={ setType }/>
+        </div>
+    </Suspense>
   )
 }
 
