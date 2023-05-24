@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "../utils/api-fetch";
+import { formatPokemonData } from "../utils/pokemon-helper";
 
 const usePokemons = (type) => {
     const { data } = useQuery({
@@ -10,7 +11,9 @@ const usePokemons = (type) => {
             const pokemons = await Promise.all(
                 pokemonList.map(async ({ pokemon }) => {
                     const res = await fetch(pokemon.url);
-                    return res.json();
+                    const data = await res.json();
+
+                    return formatPokemonData(data)
                 })
             );
 
