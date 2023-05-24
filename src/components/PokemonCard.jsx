@@ -1,10 +1,12 @@
 import React from 'react';
-import { getPokemonImageSrc } from '../utils/pokemon-card';
+import { usePokemonModal } from '../context/PokemonModalProvider';
 
 const PokemonCard = ({ pokemon, pokemon: { id, name, types, imgSrc } }) => {
+    const { handleModalOpen } = usePokemonModal();;
 
     return (
         <div
+            onClick={ () => handleModalOpen(pokemon) }
             className={ `pokemon-card ${ types[0].name }` }
         >
             <div>
