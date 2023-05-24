@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePokemonModal } from '../context/PokemonModalProvider';
+import { getTypeIconSrc } from '../utils/pokemon-helper';
 
 const PokemonCard = ({ pokemon, pokemon: { id, name, types, imgSrc } }) => {
     const { handleModalOpen } = usePokemonModal();;
@@ -20,7 +21,7 @@ const PokemonCard = ({ pokemon, pokemon: { id, name, types, imgSrc } }) => {
                             
                             return (
                                 <div key={ name } className={ name }>
-                                    <img src={ `./assets/images/navbar/${ name }.svg` } alt={ name } />
+                                    <img src={ typeImg } alt={ name } />
                                     <span className='type-name'>{ name }</span>
                                 </div>
                             );
