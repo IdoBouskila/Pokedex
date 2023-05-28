@@ -2,7 +2,7 @@ import React from 'react';
 import { usePokemonModal } from '../context/PokemonModalProvider';
 import { getTypeIconSrc } from '../utils/pokemon-helper';
 
-const PokemonCard = ({ pokemon, pokemon: { id, name, types, imgSrc } }) => {
+const PokemonCard = ({ pokemon, pokemon: { paddedId, name, types, imgSrc } }) => {
     const { handleModalOpen } = usePokemonModal();;
 
     return (
@@ -11,7 +11,7 @@ const PokemonCard = ({ pokemon, pokemon: { id, name, types, imgSrc } }) => {
             className={ `pokemon-card ${ types[0].name }` }
         >
             <div>
-                <span className='id-number'>{ '#' + id }</span>
+                <span className='id-number'>{ '#' + paddedId }</span>
                 <span className='pokemon-name'>{ name }</span>
 
                 <div className='types'>

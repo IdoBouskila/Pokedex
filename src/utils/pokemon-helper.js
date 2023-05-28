@@ -11,7 +11,7 @@ export const formatPokemonData = (pokemon) => {
 
     return {
         ...pokemon,
-        id: paddedId,
+        paddedId,
         weight: weightToKg,
         imgSrc: pokemonImg,
         height: heightToMeter,
