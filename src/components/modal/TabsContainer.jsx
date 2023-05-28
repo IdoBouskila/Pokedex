@@ -18,7 +18,7 @@ const TabsContainer = () => {
                     tabsButtons.map(({ id }, index) => (
                         <button
                             key={ id }
-                            className={ id === currentTab?.id ? 'active' : '' }
+                            className={ id === currentTab.id ? 'active' : null }
                             onClick={ () => setCurrentTab((tabsButtons[index])) }
                         >
                             { id }

@@ -3,7 +3,7 @@ import { usePokemonModal } from '../../context/PokemonModalProvider';
 import { getTypeIconSrc } from '../../utils/pokemon-helper';
 
 const IntroModal = () => {
-    const { currentPokemon, handleModalClose } = usePokemonModal?.() || {};
+    const { currentPokemon, handleModalClose } = usePokemonModal();
 
     return (
         <div className='pokemon-intro'>
@@ -13,15 +13,15 @@ const IntroModal = () => {
             ></a>
 
             <div className='current-pokemon'>
-                <img src={ currentPokemon?.imgSrc } alt='Pokemon-Image' />
+                <img src={ currentPokemon.imgSrc } alt='Pokemon-Image' />
 
                 <div>
-                    <span className='id-number'>#{ currentPokemon?.id }</span>
-                    <span className='pokemon-name'>{ currentPokemon?.name }</span>
+                    <span className='id-number'>#{ currentPokemon.paddedId }</span>
+                    <span className='pokemon-name'>{ currentPokemon.name }</span>
 
                     <div className='types'>
                         {
-                            currentPokemon?.types.map(({ name }) => {
+                            currentPokemon.types.map(({ name }) => {
                                 const typeImg = getTypeIconSrc(name)
 
                                 return (

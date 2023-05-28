@@ -7,14 +7,14 @@ export const usePokemonModal = () => {
 };
 
 export const PokemonModalProvider = ({ children }) => {
-    const [currentPokemon, setCurrentPokemon] = useState(null);
+    const [modal, setModal] = useState({ isOpen: false, pokemon: null });
 
     const value = {
-        currentPokemon,
-        handleModalOpen: (pokemon) => setCurrentPokemon(pokemon),
-        isModalOpen: !! currentPokemon,
-        handleModalClose: () => setCurrentPokemon(null),
-    }
+        currentPokemon: modal.pokemon,
+        handleModalOpen: (pokemon) => setModal({ isOpen: true, pokemon }),
+        isModalOpen: modal.isOpen,
+        handleModalClose: () => setModal((prev => ({ ...prev, isOpen: false }))),
+    };
 
     return (
         <PokemonModalContext.Provider value={ value }>

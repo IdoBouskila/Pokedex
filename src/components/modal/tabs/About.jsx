@@ -8,11 +8,11 @@ const About = () => {
     const data = [
         {
             name: 'height',
-            value: currentPokemon?.height
+            value: currentPokemon.height
         },
         {
             name: 'weight',
-            value: currentPokemon?.weight
+            value: currentPokemon.weight
         },
     ];
     
@@ -33,7 +33,7 @@ const About = () => {
                         <td>
                             <ol>
                                 {
-                                    currentPokemon?.abilities.map(({ ability, is_hidden }) => {
+                                    currentPokemon.abilities.map(({ ability, is_hidden }) => {
                                         if(is_hidden) {
                                             return <small key={ ability.name }>{ ability.name } (hidden ability)</small>
                                         }
@@ -49,7 +49,7 @@ const About = () => {
                         <td className='category'>Types</td>
                         <td>
                             {
-                                currentPokemon?.types.map(({ name }) => {
+                                currentPokemon.types.map(({ name }) => {
                                     const typeImage = getTypeIconSrc(name);
 
                                     return <img key={ name } className={ name } src={ typeImage } alt={ name } />
