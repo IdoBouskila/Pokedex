@@ -20,6 +20,7 @@ const Modal = () => {
           <Dialog.Content className={`modal ${ currentPokemon?.types[0]?.name || 'normal' }`}>
                 <IntroModal />
                 
+                <TabsContainer />
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
