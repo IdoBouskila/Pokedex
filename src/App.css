@@ -540,8 +540,10 @@ a {
 .data-container {
   padding: var(--main-padding);
   padding-bottom: 6vw;
-  border-radius: 25px;
+  max-height: 50vh;
   background: #fff;
+  border-radius: 25px;
+  overflow-y: auto;
 }
 
 .data-container .evolution-tab {
