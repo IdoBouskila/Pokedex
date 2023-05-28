@@ -12,5 +12,4 @@ const PokemonsContainer = ({ type }) => {
     );
 };
 
-
 export default PokemonsContainer;

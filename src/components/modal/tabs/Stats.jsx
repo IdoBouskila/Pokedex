@@ -5,7 +5,7 @@ import { formatStats } from '../../../utils/pokemon-helper';
 
 const Stats = () => {
     const { currentPokemon } = usePokemonModal();
-    const stats = formatStats(currentPokemon.stats)
+    const stats = formatStats(currentPokemon.stats);
     
     return (
         <>

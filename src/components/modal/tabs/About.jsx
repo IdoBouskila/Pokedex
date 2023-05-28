@@ -24,7 +24,7 @@ const About = () => {
                 <tbody>
                     {
                         data.map(row => 
-                            <DataRow key={ row.name } catergory={ row.name } value={ row.value }/>
+                            <DataRow key={ row.name } catergory={ row.name } value={ row.value } />
                         )
                     }
 

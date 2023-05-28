@@ -13,7 +13,7 @@ const usePokemons = (type) => {
                     const res = await fetch(pokemon.url);
                     const data = await res.json();
 
-                    return formatPokemonData(data)
+                    return formatPokemonData(data);
                 })
             );
 

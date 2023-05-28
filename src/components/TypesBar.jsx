@@ -3,7 +3,7 @@ import useTypes from '../hooks/useTypes';
 import { getTypeIconSrc } from '../utils/pokemon-helper';
 
 const TypesBar = ({ toggleType }) => {
-    const types = useTypes(); 
+    const types = useTypes();
 
     return (
         <nav className='types-bar'>
