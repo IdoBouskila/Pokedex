@@ -64,7 +64,17 @@ export function normalizeEvolutionChain(evolutionChain) {
     }
     
     // The evolution-chain endpoint doesn't provide the ID and image source of each evolved pokémon
-    const getPokemonImage = (url) => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${ url.match(/\/(\d+)\//)[1] }.svg`;
+    const getPokemonImage = (url) => {
+        const id = url.match(/\/(\d+)\//)[1];
+
+        const base = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other`;
+        
+        if(id > 650) {
+            return `${ base }/official-artwork/${ id }.png`;
+        }
+        
+        return `${ base }/dream-world/${ id }.svg`;
+    };
     
     const evolutions = evolves_to.reduce((chain, evolution) => {
         return [
