@@ -580,6 +580,11 @@ a {
   overflow-y: auto;
 }
 
+.data-container .error-msg {
+  display: block;
+  text-align: center;
+}
+
 .data-container .loader {
   position: relative;
   margin: auto;

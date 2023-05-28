@@ -7,8 +7,11 @@ const Evolution = () => {
     const chain = useEvolution(currentPokemon.id);
     
     return (
-        <div className='evolution-tab'>
+        <>
                 {
+                    ! chain.length ?
+                        <strong className='error-msg'>This Pokémon doesn't Evolve</strong>
+                    :
                     chain.map((evolution) => {
                         const { current, next } = evolution;
 
@@ -39,7 +42,7 @@ const Evolution = () => {
                         );
                     })
                 }
-            </div>
+            </>
     );
 };
 
