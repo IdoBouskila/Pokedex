@@ -56,3 +56,32 @@ export function formatStats(stats) {
     ];
 }
 
+export function normalizeEvolutionChain(evolutionChain) {
+    const { species, evolves_to } = evolutionChain;
+    
+    if(! evolves_to.length) {
+        return [];
+    }
+    
+    // The evolution-chain endpoint doesn't provide the ID and image source of each evolved pokémon
+    const getPokemonImage = (url) => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${ url.match(/\/(\d+)\//)[1] }.svg`;
+    
+    const evolutions = evolves_to.reduce((chain, evolution) => {
+        return [
+            ...chain,
+            {
+                current: {
+                    name: species.name,
+                    image: getPokemonImage(species.url),
+                },
+                next: {
+                    name: evolution.species.name,
+                    image: getPokemonImage(evolution.species.url),
+                },
+            },
+            ...normalizeEvolutionChain(evolution)
+        ];
+    }, []);
+
+    return evolutions;
+}
