@@ -4,13 +4,13 @@ import TypesBar from './components/TypesBar';
 import PokemonsContainer from './components/PokemonsContainer';
 import Modal from './components/modal/Modal';
 import { PokemonModalProvider } from './context/PokemonModalProvider';
-
+import Loader from './components/Loader';
 
 function App() {
   const [type, setType] = useState('ice');
 
   return (
-    <Suspense fallback={ <h1>Loading...</h1> }>
+    <Suspense fallback={ <Loader /> }>
       <PokemonModalProvider>
           <div className='wrapper'>
             <h1 className="logo-pokemon">Pokédex</h1>

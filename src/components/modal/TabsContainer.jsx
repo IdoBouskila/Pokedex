@@ -2,6 +2,7 @@ import React, { Suspense, useState } from 'react';
 import Evolution from './tabs/Evolution';
 import About from './tabs/About';
 import Stats from './tabs/Stats';
+import Loader from '../Loader';
 
 const TabsContainer = () => {
     const tabsButtons = [
@@ -29,7 +30,7 @@ const TabsContainer = () => {
             </nav>
             
             <div className='data-container'>
-                <Suspense fallback={<h1>Loading...</h1>}>
+                <Suspense fallback={ <Loader /> }>
                     { currentTab.component }
                 </Suspense>
             </div>

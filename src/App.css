@@ -17,6 +17,40 @@ a {
   cursor: pointer;
 }
 
+.loader:not(.data-container .loader) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(50vw, 200px);
+  height: min(50vw, 200px);
+  transform: translate(-50%,-50%);
+}
+
+.loader div, .loader::before, .loader::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background: #e74d4a;
+  animation: pulse 1.5s infinite .3s;
+  opacity: 0;
+}
+
+.loader:before {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  background: url('./assets/images/pokeball.svg');
+  animation: pulse 1.5s infinite;
+}
+
+.loader::after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  animation: pulse 1.5s infinite .6s;
+}
+
 @keyframes pulse {
   0% {
     transform: scale(0.1);  
@@ -546,11 +580,17 @@ a {
   overflow-y: auto;
 }
 
-.data-container .evolution-tab {
+.data-container .loader {
   position: relative;
-  max-height: 40vh;
-  overflow-y: auto;
-  min-height: 15vh;
+  margin: auto;
+  width: 15vw;
+  height: 15vw;
+}
+
+.data-container .loader div, .data-container .loader::before, .data-container .loader::after {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .evolution-container {
@@ -766,6 +806,10 @@ td.range-slide {
     border-width: 0.25vw;
   }
   
+  .data-container .loader {
+    width: 3.5vw;
+    height: 3.5vw;
+  }
 }
 
 
