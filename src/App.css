@@ -40,7 +40,7 @@ a {
   content: '';
   position: absolute;
   display: inline-block;
-  background: url('./assets/images/pokeball.svg');
+  background: url('./images/pokeball.svg');
   animation: pulse 1.5s infinite;
 }
 
@@ -356,7 +356,7 @@ a {
   height: 105%;
   transform: translate(0, -50%);
   background: rgba(255, 255, 255, 0.11);
-  mask: url("./assets/images/pokeball-transparent.svg");
+  mask: url("./images/pokeball-transparent.svg");
   mask-repeat: no-repeat;
   mask-size: cover;
 }
@@ -563,7 +563,7 @@ a {
   left: 50%;
   top: 10%;
   transform: translate(-50%, 0);
-  mask: url("./assets/images/pokeball-transparent.svg");
+  mask: url("./images/pokeball-transparent.svg");
   mask-repeat: no-repeat;
   mask-size: 100%;
   background: linear-gradient(rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 100%);
