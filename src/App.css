@@ -359,6 +359,9 @@ a {
   mask: url("/images/pokeball-transparent.svg");
   mask-repeat: no-repeat;
   mask-size: cover;
+  -webkit-mask: url("/images/pokeball-transparent.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
 }
 
 .pokemon-card > div:first-of-type {
@@ -426,6 +429,8 @@ a {
   font-weight: 800;
   text-transform: uppercase;
   mask-image: linear-gradient(to bottom, #000 50%, transparent 80%);
+  text-stroke: 2px rgba(255, 255, 255, 0.065);
+  -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 80%);
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.065);
   z-index: -1;
 }
@@ -563,6 +568,9 @@ a {
   left: 50%;
   top: 10%;
   transform: translate(-50%, 0);
+  -webkit-mask: url("/images/pokeball-transparent.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100%;
   mask: url("/images/pokeball-transparent.svg");
   mask-repeat: no-repeat;
   mask-size: 100%;
@@ -786,7 +794,19 @@ td.range-slide {
   }
   
   .data-container {
+    scrollbar-width: thin;
+    scrollbar-color: currentColor transparent;
     padding-bottom: 2vw;
+  }
+
+  .data-container::-webkit-scrollbar-thumb {
+    background: currentColor;
+    border-radius: 50px;
+  }
+
+  .data-container::-webkit-scrollbar {
+    background: transparent;
+    width: 6px;
   }
 
   .data-container .category {
