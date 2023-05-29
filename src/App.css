@@ -574,7 +574,7 @@ a {
 .data-container {
   padding: var(--main-padding);
   padding-bottom: 6vw;
-  max-height: 50vh;
+  max-height: 38vh;
   background: #fff;
   border-radius: 25px;
   overflow-y: auto;
@@ -602,11 +602,11 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding-bottom: 4.5vh;
+  margin-bottom: 4.5vh;
 }
 
 .evolution-container:last-child {
-  padding: 0;
+  margin: 0;
 }
 
 .evolution-container span {
