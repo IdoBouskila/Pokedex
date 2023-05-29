@@ -536,7 +536,7 @@ a {
 .modal nav {
   display: flex;
   justify-content: space-between;
-  padding: var(--main-padding);
+  padding: 0.5vw 3vw 0 3vw;
 }
 
 .modal nav button {
@@ -581,7 +581,7 @@ a {
 
 .data-container {
   padding: var(--main-padding);
-  padding-bottom: 6vw;
+  padding-bottom: 5vw;
   max-height: 38vh;
   background: #fff;
   border-radius: 25px;
@@ -693,10 +693,11 @@ td > img {
 
 .data-container table {
   width: 100%;
+  border-spacing: 0 1.1vh;
 }
 
 .data-container td {
-  padding: 0.7vw 3vw;
+  padding: 0 3vw;
 }
 
 .data-container .category {
@@ -765,7 +766,6 @@ td.range-slide {
     padding: 0.5vw;
   }
 
-
   .modal {
     --main-padding: 3vw 3vw 0 3vw;
     width: 60%;
@@ -796,7 +796,12 @@ td.range-slide {
   .data-container {
     scrollbar-width: thin;
     scrollbar-color: currentColor transparent;
-    padding-bottom: 2vw;
+    padding: 2vw;
+  }
+
+  .data-container table {
+    width: 100%;
+    border-spacing: 0 1.75vh;
   }
 
   .data-container::-webkit-scrollbar-thumb {
