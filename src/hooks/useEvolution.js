@@ -8,13 +8,17 @@ const useEvolution = (id) => {
         queryFn: async () => {
             try {
                 const { evolution_chain } = await apiFetch(`/pokemon-species/${ id }/`);
-
+    
                 const res = await fetch(evolution_chain.url);
                 const { chain } = await res.json();
-
+    
                 return normalizeEvolutionChain(chain);
             } catch (error) {
-                return [];
+                if(error.status === 404) {
+                    return [];
+                }
+
+                throw error;
             }
         },
     });
