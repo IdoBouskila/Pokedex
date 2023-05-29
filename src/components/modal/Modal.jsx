@@ -17,7 +17,10 @@ const Modal = () => {
         <Dialog.Portal>
           <Dialog.Overlay className='overlay' />
             
-          <Dialog.Content className={ `modal ${ currentPokemon?.types[0]?.name }` }>
+          <Dialog.Content
+            className={ `modal ${ currentPokemon?.types[0]?.name }` }
+            data-content={ currentPokemon?.name }
+          >
                 <IntroModal />
                 
                 <TabsContainer />
