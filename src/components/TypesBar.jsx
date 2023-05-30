@@ -22,7 +22,7 @@ const TypesBar = ({ toggleType }) => {
                     );
                 })
             }
-            </nav>
+        </nav>
     );
 };
 

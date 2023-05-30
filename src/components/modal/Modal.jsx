@@ -21,9 +21,9 @@ const Modal = () => {
             className={ `modal ${ currentPokemon?.types[0]?.name }` }
             data-content={ currentPokemon?.name }
           >
-                <IntroModal />
-                
-                <TabsContainer />
+            <IntroModal />
+              
+            <TabsContainer />
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
