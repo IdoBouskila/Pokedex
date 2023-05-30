@@ -3,8 +3,8 @@ export const getTypeIconSrc = (type) => `./images/types-icons/${ type }.svg`;
 export const formatPokemonData = (pokemon) => {
     const { id, name, sprites, weight, height, stats, types } = pokemon;
     
-    const weightToKg = (weight / 10 ) + 'kg';
-    const heightToMeter = (height / 10 ) + 'm';
+    const weightInKg = (weight / 10 ) + 'kg';
+    const heightInMeter = (height / 10 ) + 'm';
     const paddedId = String(id).padStart(3, '0');
     const formattedTypes = types.map(({ type }) => type);
     const pokemonImg = sprites.other.dream_world.front_default || sprites.other['official-artwork'].front_default;
@@ -12,9 +12,9 @@ export const formatPokemonData = (pokemon) => {
     return {
         ...pokemon,
         paddedId,
-        weight: weightToKg,
+        weight: weightInKg,
         imgSrc: pokemonImg,
-        height: heightToMeter,
+        height: heightInMeter,
         types: formattedTypes,
         name: removeHyphens(name),
     };
