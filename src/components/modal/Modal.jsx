@@ -6,12 +6,12 @@ import * as Dialog from '@radix-ui/react-dialog';
 
 
 const Modal = () => {
-    const { isModalOpen, handleModalClose, currentPokemon } = usePokemonModal();
+    const { isModalOpen, closeModal, currentPokemon } = usePokemonModal();
 
     return (
         <Dialog.Root
             open={ isModalOpen }
-            onOpenChange={ (isOpen) => ! isOpen && handleModalClose() }
+            onOpenChange={ (isOpen) => ! isOpen && closeModal() }
         >
 
         <Dialog.Portal>

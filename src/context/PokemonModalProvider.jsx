@@ -11,9 +11,9 @@ export const PokemonModalProvider = ({ children }) => {
 
     const value = {
         currentPokemon: modal.pokemon,
-        handleModalOpen: (pokemon) => setModal({ isOpen: true, pokemon }),
+        openModal: (pokemon) => setModal({ isOpen: true, pokemon }),
         isModalOpen: modal.isOpen,
-        handleModalClose: () => setModal((prev => ({ ...prev, isOpen: false }))),
+        closeModal: () => setModal((prev => ({ ...prev, isOpen: false }))),
     };
 
     return (

@@ -3,13 +3,13 @@ import { usePokemonModal } from '../../context/PokemonModalProvider';
 import { getTypeIconSrc } from '../../utils/pokemon-helper';
 
 const IntroModal = () => {
-    const { currentPokemon, handleModalClose } = usePokemonModal();
+    const { currentPokemon, closeModal } = usePokemonModal();
 
     return (
         <div className='pokemon-intro'>
             <a
                 className='arrow-back'
-                onClick={ () => handleModalClose }
+                onClick={ closeModal }
             ></a>
 
             <div className='current-pokemon'>

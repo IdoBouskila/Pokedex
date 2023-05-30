@@ -3,11 +3,11 @@ import { usePokemonModal } from '../context/PokemonModalProvider';
 import { getTypeIconSrc } from '../utils/pokemon-helper';
 
 const PokemonCard = ({ pokemon, pokemon: { paddedId, name, types, imgSrc } }) => {
-    const { handleModalOpen } = usePokemonModal();
+    const { openModal } = usePokemonModal();
 
     return (
         <div
-            onClick={ () => handleModalOpen(pokemon) }
+            onClick={ () => openModal(pokemon) }
             className={ `pokemon-card ${ types[0].name }` }
         >
             <div>
