@@ -5,23 +5,23 @@ import Stats from './tabs/Stats';
 import Loader from '../Loader';
 
 const TabsContainer = () => {
-    const tabsButtons = [
+    const tabs = [
         { id: 'About', component: <About /> },
         { id: 'Stats', component: <Stats /> },
         { id: 'Evolution', component: <Evolution /> }
     ];
 
-    const [currentTab, setCurrentTab] = useState(tabsButtons[0]);
+    const [currentTab, setCurrentTab] = useState(0);
 
     return (
         <>
             <nav>
                 {
-                    tabsButtons.map(({ id }, index) => (
+                    tabs.map(({ id }, index) => (
                         <button
                             key={ id }
-                            className={ id === currentTab.id ? 'active' : null }
-                            onClick={ () => setCurrentTab((tabsButtons[index])) }
+                            className={ index === currentTab ? 'active' : null }
+                            onClick={ () => setCurrentTab(index) }
                         >
                             { id }
                         </button>
@@ -31,7 +31,7 @@ const TabsContainer = () => {
             
             <div className='data-container'>
                 <Suspense fallback={ <Loader /> }>
-                    { currentTab.component }
+                    { tabs[currentTab].component }
                 </Suspense>
             </div>
         </>
