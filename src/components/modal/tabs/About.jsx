@@ -5,16 +5,6 @@ import DataRow from '../DataRow';
 
 const About = () => {
     const { currentPokemon } = usePokemonModal();
-    const data = [
-        {
-            name: 'height',
-            value: currentPokemon.height
-        },
-        {
-            name: 'weight',
-            value: currentPokemon.weight
-        },
-    ];
     
     return (
         <>
@@ -22,11 +12,8 @@ const About = () => {
                 
             <table>
                 <tbody>
-                    {
-                        data.map(row => 
-                            <DataRow key={ row.name } catergory={ row.name } value={ row.value } />
-                        )
-                    }
+                    <DataRow catergory={ 'height' } value={ currentPokemon.height } />
+                    <DataRow catergory={ 'weight' } value={ currentPokemon.weight } />
 
                     <tr>
                         <td className='category'>Abilities</td>
