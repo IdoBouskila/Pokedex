@@ -20,10 +20,6 @@ export const formatPokemonData = (pokemon) => {
     };
 }
 
-function removeHyphens(string) {
-    return string.replace(/-/g, ' ');
-}
-
 // create well structured object from api stats array for easier usage
 export function formatStats(stats) {
     const statsMaxValues = {
@@ -63,19 +59,6 @@ export function normalizeEvolutionChain(evolutionChain) {
         return [];
     }
     
-    // The evolution-chain endpoint doesn't provide the ID and image source of each evolved pokémon
-    const getPokemonImage = (url) => {
-        const id = url.match(/\/(\d+)\//)[1];
-
-        const base = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other`;
-        
-        if(id > 650) {
-            return `${ base }/official-artwork/${ id }.png`;
-        }
-        
-        return `${ base }/dream-world/${ id }.svg`;
-    };
-    
     const evolutions = evolves_to.reduce((chain, evolution) => {
         return [
             ...chain,
@@ -94,4 +77,22 @@ export function normalizeEvolutionChain(evolutionChain) {
     }, []);
 
     return evolutions;
+}
+
+// The evolution-chain endpoint doesn't provide the ID and image source of each evolved pokémon
+const getPokemonImage = (url) => {
+    const id = url.match(/\/(\d+)\//)[1];
+    const isPokemonHasSvg = id < 650; 
+
+    const base = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other`;
+    
+    if(isPokemonHasSvg) {
+        return `${ base }/dream-world/${ id }.svg`;
+    }
+    
+    return `${ base }/official-artwork/${ id }.png`;
+};
+
+const removeHyphens = (string) => {
+    return string.replace(/-/g, ' ');
 }
