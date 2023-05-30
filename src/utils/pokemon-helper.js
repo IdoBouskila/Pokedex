@@ -39,16 +39,11 @@ export function formatStats(stats) {
         }
     });
 
-    const totalStats = stats.reduce((total, { base_stat }) => {
-        return {
-            ...total,
-            value: total.value + base_stat
-        };
-    }, { name: 'total', value: 0 });
+    const total = stats.reduce((total, { base_stat }) => total + base_stat, 0);
     
     return [
         ...statsObject,
-        totalStats
+        { name: 'total', value: total }
     ];
 }
 
