@@ -11,7 +11,7 @@ const wrapper = ({ children }) => (
     </QueryClientProvider>
 );
 
-describe('useType Hook', () => {
+describe('useType', () => {
     fetchMock.enableMocks();
 
     beforeEach(() => {
