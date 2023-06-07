@@ -1,7 +1,19 @@
 export const getTypeIconSrc = (type) => `./images/types-icons/${ type }.svg`;
 
+/**
+ * Formats the given Pokemon data object.
+ *
+ * @param {Object} pokemon
+ * @param {number} pokemon.id - The ID of the Pokemon.
+ * @param {string} pokemon.name - The name of the Pokemon.
+ * @param {Object} pokemon.sprites - The sprites object containing image URLs of the Pokemon.
+ * @param {number} pokemon.weight - The weight of the Pokemon.
+ * @param {number} pokemon.height - The height of the Pokemon.
+ * @param {Array} pokemon.types - The types array containing the types of the Pokemon.
+ * @returns {Object} - The formatted Pokemon data object.
+ */
 export const formatPokemonData = (pokemon) => {
-    const { id, name, sprites, weight, height, stats, types } = pokemon;
+    const { id, name, sprites, weight, height, types } = pokemon;
     
     const weightInKg = (weight / 10 ) + 'kg';
     const heightInMeter = (height / 10 ) + 'm';
@@ -20,7 +32,12 @@ export const formatPokemonData = (pokemon) => {
     };
 }
 
-// create well structured object from api stats array for easier usage
+/**
+ * Formats the stats array obtained from the API into a well-structured object for easier usage.
+ *
+ * @param {Array} stats - The stats array obtained from the API.
+ * @returns {Array} - The formatted stats array.
+ */
 export function formatStats(stats) {
     const statsMaxValues = {
         hp: 714,
@@ -74,7 +91,13 @@ export function normalizeEvolutionChain(evolutionChain) {
     return evolutions;
 }
 
-// The evolution-chain endpoint doesn't provide the ID and image source of each evolved pokémon
+/**
+ * Retrieves the image source of a Pokémon based on provided url with id.
+ * This is necessary because the evolution endpoint doesn't provide the ID of each evolved Pokémon.
+ *
+ * @param {string} url - The species URL or URL with the ID of the Pokémon.
+ * @returns {string} - The image source of the Pokémon.
+ */
 const getPokemonImage = (url) => {
     const id = url.match(/\/(\d+)\//)[1];
     const isPokemonHasSvg = id < 650; 
