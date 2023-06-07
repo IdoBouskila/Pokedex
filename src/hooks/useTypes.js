@@ -12,7 +12,7 @@ const useTypes = () => {
         }
     });
 
-    return data
+    return data;
 };
 
 export default useTypes;
