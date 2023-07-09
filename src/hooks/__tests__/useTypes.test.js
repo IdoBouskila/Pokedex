@@ -41,14 +41,22 @@ describe('useType', () => {
             ]
         };
 
-        fetch.mockResponseOnce(JSON.stringify(mockTypes));
+        fetch.mockResponse(async (req) => {
+            if(req.url === 'https://pokeapi.co/api/v2/type') {
+                return JSON.stringify(mockTypes);
+            }
+
+            Promise.reject({
+                status: 404,
+                message: 'not found'
+            });
+        });
 
         // Act
         const { result } = renderHook(() => useTypes(), { wrapper });
-        await waitFor(() => expect(result.current.length).toBeTruthy());
-
+        
         // Assert
-        expect(result.current).toStrictEqual([
+        await waitFor(() => expect(result.current).toStrictEqual([
             {
                 name: 'normal',
                 url: 'test-url-1'
@@ -57,6 +65,6 @@ describe('useType', () => {
                 name: 'fighting',
                 url: 'test-url-2'
             }
-        ]);
+        ]));
     });
 });

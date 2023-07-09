@@ -19,10 +19,12 @@ describe('useEvolution', () => {
     });
 
     it(`should return empty array if pokemon doesn't evolved`, async () => {
+        const mockId = 999;
+
         // Arrange
         const pokemonSpeciesMock = {
             evolution_chain: {
-                url: 'example.com'
+                url: `example.com/${ mockId }`
             }
         };
 
@@ -37,11 +39,29 @@ describe('useEvolution', () => {
         };
 
         fetch
-        .once(JSON.stringify(pokemonSpeciesMock))
-        .once(JSON.stringify(evolutionChainMock));
+        .once(async (req) => {
+            if(req.url === `https://pokeapi.co/api/v2/pokemon-species/${ mockId }/`) {
+                return JSON.stringify(pokemonSpeciesMock);
+            }
+
+            Promise.reject({
+                status: 404,
+                message: 'not found'
+            });
+        })
+        .once(async (req) => {
+            if(req.url === pokemonSpeciesMock.evolution_chain.url) {
+                return JSON.stringify(evolutionChainMock);
+            }
+
+            Promise.reject({
+                status: 404,
+                message: 'not found'
+            })
+        });
 
         // Act
-        const { result } = renderHook(() => useEvolution(), { wrapper });
+        const { result } = renderHook(() => useEvolution(mockId), { wrapper });
         
         // Assert
         await waitFor(() => expect(result.current).toHaveLength(0));
@@ -52,7 +72,7 @@ describe('useEvolution', () => {
         fetch.mockReject({ status: 404, statusText: 'Not Found' });
 
         // Act
-        const { result } = renderHook(() => useEvolution(), { wrapper });
+        const { result } = renderHook(() => useEvolution('invalid_id'), { wrapper });
 
         // Assert
         await waitFor(() => expect(result.current).toHaveLength(0));
@@ -60,12 +80,13 @@ describe('useEvolution', () => {
 
     it('should return normalize evolution chain of pokemon', async () => {
         // Arrange
+        const mockId = 1;
+
         const pokemonSpeciesMock = {
             evolution_chain: {
-                url: 'example.com'
+                url: `example.com/${ mockId }`
             }
         };
-
         
         const evolutionChainMock = {
             chain: {
@@ -94,11 +115,30 @@ describe('useEvolution', () => {
         };
 
         fetch
-        .once(JSON.stringify(pokemonSpeciesMock))
-        .once(JSON.stringify(evolutionChainMock));
+        .once(async (req) => {
+            if(req.url === `https://pokeapi.co/api/v2/pokemon-species/${ mockId }/`) {
+                return JSON.stringify(pokemonSpeciesMock);
+            }
+
+            Promise.reject({
+                status: 404,
+                message: 'not found'
+            })
+        })
+        .once(async (req) => {
+            console.log('ur', req.url)
+            if(req.url === pokemonSpeciesMock.evolution_chain.url) {
+                return JSON.stringify(evolutionChainMock);
+            }
+
+            Promise.reject({
+                status: 404,
+                message: 'not found'
+            })
+        });
 
         // Act
-        const { result } = renderHook(() => useEvolution(), { wrapper });
+        const { result } = renderHook(() => useEvolution(mockId), { wrapper });
         
         // Assert
         await waitFor(() => expect(result.current).toStrictEqual([

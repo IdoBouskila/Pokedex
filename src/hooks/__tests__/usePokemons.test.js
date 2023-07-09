@@ -20,6 +20,8 @@ describe('usePokemons', () => {
 
     it('should return all pokemons', async () => {
         // Arrange
+        const typeNameMock = 'normal';
+
         const pokemonListMock = {
             pokemon: [
                 {
@@ -69,11 +71,20 @@ describe('usePokemons', () => {
         ];
 
         fetch
-            .once(JSON.stringify(pokemonListMock))
-            .mockResponses(...promisesValuesMock.map(promiseValue => JSON.stringify(promiseValue)))
+            .once(async (req) => {
+                if(req.url === `https://pokeapi.co/api/v2/type/${ typeNameMock }`) {
+                    return JSON.stringify(pokemonListMock);
+                }
+                
+                Promise.reject({
+                    status: 404,
+                    message: 'not found'
+                });
+            })
+            .mockResponses(...promisesValuesMock.map(promiseValue => JSON.stringify(promiseValue)));
 
         // Act
-        const { result } = renderHook(() => usePokemons(), { wrapper });
+        const { result } = renderHook(() => usePokemons(typeNameMock), { wrapper });
         
         // Assert
         await waitFor(() => expect(result.current).toStrictEqual([
